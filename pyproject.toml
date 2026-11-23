@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "wa-memory"
+version = "0.3.0"
+description = "Your whole WhatsApp history in a local, searchable store that Claude can read (read-only MCP server)."
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+requires-python = ">=3.11"
+authors = [{ name = "wa-memory contributors" }]
+keywords = ["whatsapp", "mcp", "claude", "local-first", "search", "memory"]
+classifiers = [
+  "Operating System :: MacOS",
+  "Programming Language :: Python :: 3",
+  "Topic :: Communications :: Chat",
+]
+dependencies = [
+  "neonize>=0.12.4,<0.13",
+  "cryptography>=42",
+  "segno>=1.5",
+]
+
+[project.optional-dependencies]
+pdf = ["pypdf>=6"]
+
+[project.scripts]
+wa-memory = "wa_memory.cli:main"
+wa-memory-mcp = "wa_memory.mcp_server:main"
+
+[tool.setuptools]
+packages = ["wa_memory"]
